@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function() {
   const connectBtn = document.getElementById('connect-tiktok');
   if (connectBtn) {
     connectBtn.onclick = function() {
-      alert('TikTok 연동 기능은 데모입니다. 실제 연동은 구현 필요!');
+      window.open('https://buly.kr/DaPzHuB', '_blank');
     };
   }
 
