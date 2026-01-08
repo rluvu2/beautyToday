@@ -15,6 +15,8 @@
     <button id="make-highlight" style="margin-bottom:24px;">하이라이트 만들기</button>
     <div id="highlight-list" style="margin-bottom:24px;"></div>
     <p>여러가지 팩의 장단점을 비교하는 영상입니다.</p>
+    <button id="post-btn" style="margin-bottom:16px;">포스팅 하기</button>
+    <div id="post-result" style="margin-bottom:16px;"></div>
     <a href="main.html" class="button">메인으로 돌아가기</a>
     <script>
       document.getElementById('make-highlight').onclick = function() {
@@ -52,6 +54,18 @@
           }
         }
         showNext();
+      };
+      document.getElementById('post-btn').onclick = function() {
+        const btn = this;
+        btn.disabled = true;
+        btn.textContent = '포스팅 중...';
+        const result = document.getElementById('post-result');
+        result.textContent = '';
+        setTimeout(function() {
+          btn.textContent = '포스팅 하기';
+          btn.disabled = false;
+          result.textContent = '포스팅이 완료되었습니다.';
+        }, 15000);
       };
     </script>
   </div>
