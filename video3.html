@@ -28,6 +28,7 @@
         let i = 0;
         function showNext() {
           if (i < highlights.length) {
+            setTimeout(showNext, 7000);
             const h = highlights[i];
             const btn = document.createElement('a');
             btn.href = h.url;
@@ -46,7 +47,6 @@
             btn.style.textDecoration = 'none';
             list.appendChild(btn);
             i++;
-            setTimeout(showNext, 7000);
           }
         }
         showNext();
