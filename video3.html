@@ -26,6 +26,25 @@
         ];
         const list = document.getElementById('highlight-list');
         list.innerHTML = '';
+        // 로딩 스피너와 메시지 추가
+        const loadingDiv = document.createElement('div');
+        loadingDiv.style.display = 'flex';
+        loadingDiv.style.flexDirection = 'column';
+        loadingDiv.style.alignItems = 'center';
+        loadingDiv.style.margin = '20px 0';
+        loadingDiv.id = 'highlight-loading';
+        loadingDiv.innerHTML = `
+          <div class="spinner" style="width:40px;height:40px;border:5px solid #eee;border-top:5px solid #ff0050;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:10px;"></div>
+          <div style="font-size:1.1rem;color:#888;">생성 중~</div>
+        `;
+        list.appendChild(loadingDiv);
+        // 스피너 애니메이션 스타일 추가
+        if (!document.getElementById('highlight-spinner-style')) {
+          const style = document.createElement('style');
+          style.id = 'highlight-spinner-style';
+          style.innerHTML = `@keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }`;
+          document.head.appendChild(style);
+        }
         let i = 0;
         function showNext() {
           if (i < highlights.length) {
@@ -83,8 +102,13 @@
               wrapper.appendChild(result);
               list.appendChild(wrapper);
               i++;
-              showNext();
-            }, 7000);
+              if (i < highlights.length) {
+                showNext();
+              } else {
+                // 모든 하이라이트가 다 나오면 로딩 스피너 제거
+                if (loadingDiv && loadingDiv.parentNode) loadingDiv.parentNode.removeChild(loadingDiv);
+              }
+            }, 700);
           }
         }
         showNext();
