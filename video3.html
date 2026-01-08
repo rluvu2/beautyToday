@@ -15,15 +15,14 @@
     <button id="make-highlight" style="margin-bottom:24px;">하이라이트 만들기</button>
     <div id="highlight-list" style="margin-bottom:24px;"></div>
     <p>여러가지 팩의 장단점을 비교하는 영상입니다.</p>
-    <button id="post-btn" style="margin-bottom:16px;">포스팅 하기</button>
     <div id="post-result" style="margin-bottom:16px;"></div>
     <a href="main.html" class="button">메인으로 돌아가기</a>
     <script>
       document.getElementById('make-highlight').onclick = function() {
         const highlights = [
-            { label: '하이라이트1', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut0.mp4' },
-            { label: '하이라이트2', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut1.mp4' },
-            { label: '하이라이트3', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut2.mp4' }
+          { label: '하이라이트1', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut0.mp4' },
+          { label: '하이라이트2', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut1.mp4' },
+          { label: '하이라이트3', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut2.mp4' }
         ];
         const list = document.getElementById('highlight-list');
         list.innerHTML = '';
@@ -32,6 +31,12 @@
           if (i < highlights.length) {
             setTimeout(function() {
               const h = highlights[i];
+              const wrapper = document.createElement('div');
+              wrapper.style.display = 'flex';
+              wrapper.style.flexDirection = 'column';
+              wrapper.style.alignItems = 'center';
+              wrapper.style.margin = '20px 0';
+
               const btn = document.createElement('a');
               btn.href = h.url;
               btn.target = '_blank';
@@ -44,10 +49,39 @@
               btn.style.padding = '12px 24px';
               btn.style.fontSize = '1rem';
               btn.style.cursor = 'pointer';
-              btn.style.margin = '8px 0';
+              btn.style.margin = '0 0 8px 0';
               btn.style.textAlign = 'center';
               btn.style.textDecoration = 'none';
-              list.appendChild(btn);
+
+              const postBtn = document.createElement('button');
+              postBtn.textContent = '포스팅 하기';
+              postBtn.style.background = '#222';
+              postBtn.style.color = '#fff';
+              postBtn.style.border = 'none';
+              postBtn.style.borderRadius = '8px';
+              postBtn.style.padding = '10px 20px';
+              postBtn.style.fontSize = '1rem';
+              postBtn.style.cursor = 'pointer';
+              postBtn.style.marginBottom = '8px';
+
+              const result = document.createElement('div');
+              result.style.marginBottom = '8px';
+
+              postBtn.onclick = function() {
+                postBtn.disabled = true;
+                postBtn.textContent = '포스팅 중...';
+                result.textContent = '';
+                setTimeout(function() {
+                  postBtn.textContent = '포스팅 하기';
+                  postBtn.disabled = false;
+                  result.textContent = '포스팅이 완료되었습니다.';
+                }, 15000);
+              };
+
+              wrapper.appendChild(btn);
+              wrapper.appendChild(postBtn);
+              wrapper.appendChild(result);
+              list.appendChild(wrapper);
               i++;
               showNext();
             }, 7000);
