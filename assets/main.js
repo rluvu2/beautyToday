@@ -11,9 +11,9 @@ window.addEventListener('DOMContentLoaded', function() {
   if (fetchBtn) fetchBtn.onclick = function() {
     // 데모용 더미 데이터
     const videos = [
-      { id: 1, title: '댄스 챌린지', thumb: 'https://via.placeholder.com/80x120?text=Video+1', url: '#' },
-      { id: 2, title: '꿀팁 영상', thumb: 'https://via.placeholder.com/80x120?text=Video+2', url: '#' },
-      { id: 3, title: '웃긴 순간', thumb: 'https://via.placeholder.com/80x120?text=Video+3', url: '#' }
+      { id: 1, title: '화장품 소개1', thumb: 'https://img.youtube.com/vi/WkGG0HZdGyc/0.jpg', url: '#' },
+      { id: 2, title: '피부관리 노하우', thumb: 'http://phaeton.firestick.live/media/8296/highlighting/cut0_thumb.jpg', url: '#' },
+      { id: 3, title: '여러가지 팩 장단점', thumb: 'http://phaeton.firestick.live/media/4408/highlighting/cut0_thumb.jpg', url: '#' }
     ];
     const list = document.getElementById('videos-list');
     list.innerHTML = '';
