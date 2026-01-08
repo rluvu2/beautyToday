@@ -1,5 +1,4 @@
 // TikTok 연동 및 영상 가져오기 (데모용)
-document.getElementById('fetch-videos').onclick = function() {
 const connectBtn = document.getElementById('connect-tiktok');
 if (connectBtn) {
   connectBtn.onclick = function() {
