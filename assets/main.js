@@ -20,14 +20,8 @@ window.addEventListener('DOMContentLoaded', function() {
     videos.forEach(v => {
       const item = document.createElement('div');
       item.className = 'video-item';
-    //   item.innerHTML = `
-    //     <img class="video-thumb" src="${v.thumb}" alt="${v.title}">
-    //     <div>
-    //       <div><strong>${v.title}</strong></div>
-    //       <a href="${v.url}" target="_blank">영상 보기</a>
-    //     </div>
-    //   `;
       item.innerHTML = `
+        <img class="video-thumb" src="${v.thumb}" alt="${v.title}">
         <div>
           <div><strong>${v.title}</strong></div>
           <a href="${v.url}" target="_blank">영상 보기</a>
