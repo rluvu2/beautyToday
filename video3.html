@@ -19,9 +19,9 @@
     <script>
       document.getElementById('make-highlight').onclick = function() {
         const highlights = [
-          { label: '하이라이트1', time: '0~2초', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut0.mp4' },
-          { label: '하이라이트2', time: '0~2초', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut1.mp4' },
-          { label: '하이라이트3', time: '0~2초', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut2.mp4' }
+            { label: '하이라이트1', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut0.mp4' },
+            { label: '하이라이트2', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut1.mp4' },
+            { label: '하이라이트3', url: 'http://phaeton.firestick.live/media/4408/highlighting/cut2.mp4' }
         ];
         const list = document.getElementById('highlight-list');
         list.innerHTML = '';
@@ -29,13 +29,24 @@
         function showNext() {
           if (i < highlights.length) {
             const h = highlights[i];
-            const item = document.createElement('div');
-            item.style.fontSize = '1.2rem';
-            item.style.margin = '8px 0';
-            item.innerHTML = `<strong>${h.label}</strong> <span style="color:#888;">(${h.time})</span> <a href="${h.url}" target="_blank" style="margin-left:8px;">cut${i}</a>`;
-            list.appendChild(item);
+            const btn = document.createElement('a');
+            btn.href = h.url;
+            btn.target = '_blank';
+            btn.textContent = h.label;
+            btn.style.display = 'inline-block';
+            btn.style.background = '#ff0050';
+            btn.style.color = '#fff';
+            btn.style.border = 'none';
+            btn.style.borderRadius = '8px';
+            btn.style.padding = '12px 24px';
+            btn.style.fontSize = '1rem';
+            btn.style.cursor = 'pointer';
+            btn.style.margin = '8px 0';
+            btn.style.textAlign = 'center';
+            btn.style.textDecoration = 'none';
+            list.appendChild(btn);
             i++;
-            setTimeout(showNext, 700);
+            setTimeout(showNext, 7000);
           }
         }
         showNext();
